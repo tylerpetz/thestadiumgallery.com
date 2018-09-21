@@ -1,0 +1,27 @@
+{% assign header_font = '"' | append: settings.header_font_1 | append: '"' | append: ', sans-serif' %}
+{% assign general_font = '"' | append: settings.general_font_1 | append: '"' | append: ', sans-serif' %}
+
+{% if settings.header_font == "1" %}
+{% assign header_font = '"' | append: settings.header_font_1 | append: '"' | append: ', sans-serif' %}
+{% else %}
+{% assign header_font = settings.header_font_0 %}
+{% endif %}
+
+{% if settings.general_font == "1" %}
+{% assign general_font = '"' | append: settings.general_font_1 | append: '"' | append: ', sans-serif' %}
+{% else %}
+{% assign general_font = settings.general_font_0 %}
+{% endif %}
+
+
+body{
+  font-family: {{general_font}};
+}
+
+h1, h2, h3, h4, h5, h6, .btn, .product__info__name, .product__price, .total-line__price{
+  font-family: {{header_font}};
+}
+
+.shop__logo{
+  max-width: 100%;
+}

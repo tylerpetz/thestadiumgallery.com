@@ -1,0 +1,78 @@
+
+
+<div id="content" class="col-md-12 center-column content-with-background">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-md-offset-1 text-center">
+      {{page.content}}
+      <br/>
+      <hr/>
+      <br/>
+      <div class="row text-left">
+        <div class="col-sm-12 col-md-4">
+          <h4>Florida</h4>
+          <p>434 St Armands Cir.<br/>Sarasota, FL 34236</p>
+          <a href="tel:+19413885400" class="button">(941) 388-5400</a>
+          <a href="https://www.google.com/maps?ll=27.318519,-82.576341&z=16&t=m&hl=en-US&gl=US&mapclient=embed&q=434+St+Armands+Cir+Sarasota,+FL+34236" class="button">View Map</a>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <h4>New York</h4>
+          <p>65 Main St.<br/> Cooperstown, NY 13326</p>
+          <a href="tel:+16072824464" class="button">(607) 282-4464</a>
+          <a href="https://www.google.com/maps?ll=42.700379,-74.923883&z=16&t=m&hl=en-US&gl=US&mapclient=embed&q=65+Main+St+Cooperstown,+NY+13326" class="button">View Map</a>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <h4>Maine</h4>
+          <p>17 State Rte 9<br/> Kennebunkport, ME 04046</p>
+          <a href="tel:+12079674577" class="button">(207) 967-4577</a>
+          <a href="https://www.google.com/maps?ll=43.361574,-70.477504&z=16&t=m&hl=en-US&gl=US&mapclient=embed&q=17+State+Rte+9+Kennebunkport,+ME+04046" class="button">View Map</a>
+        </div>
+      </div>
+      <br/><br/>
+      <hr/>
+      <br/><br/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-md-offset-3">
+      {%- form 'contact' -%}
+      {%- if form.posted_successfully? -%}
+      <div class="success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        {{'contact.form.post_success' | t}}
+      </div>
+      {%- endif -%}
+
+      {%- if form.errors -%}
+      <div class="warning">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        {{form.errors | default_errors}}
+      </div>
+      {%- endif -%}
+      <fieldset>
+        <h3>{{'contact.form.heading' | t}}</h3>
+        <div class="form-group required">
+          <label class="control-label" for="name">{{'contact.form.name' | t}}</label>
+          <input required="required" type="text" id="name" class="form-control" value="{%- if form.name -%}{{form.name}}{%- elsif customer -%}{{customer.first_name}} {{customer.last_name}}{%- endif -%}" name="contact[name]" />
+        </div>
+        <div class="form-group required">
+          <label class="control-label" for="email">{{'contact.form.email' | t}}</label>
+          <input required="required" type="email" id="email" class="form-control" value="{%- if form.email -%}{{form.email}}{%- elsif customer -%}{{customer.email}}{%- endif -%}" name="contact[email]" />
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="phone">{{'contact.form.phone' | t}}</label>
+            <input type="text" id="phone" class="form-control" value="{{form.phone}}" name="contact[phone]" />
+        </div>
+        <div class="form-group required">
+          <label class="control-label" for="message">{{'contact.form.message' | t}}</label>
+            <textarea required="required" id="message" rows="10" class="form-control" name="contact[body]">{{form.body}}</textarea>
+        </div>
+      </fieldset>
+      <div class="buttons">
+        <div class="pull-right">
+          <input class="btn btn-primary" type="submit" value="{{'contact.form.submit' | t}}" />
+        </div>
+      </div>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
